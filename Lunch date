@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Lunch ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#ffe6f0,#fff5fb);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.card {
+    background: white;
+    width: 85%;
+    max-width: 400px;
+    padding: 35px;
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+h1 {
+    color: #e91e63;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 15px 25px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#yes {
+    background: #e91e63;
+    color: white;
+}
+
+#no {
+    background: #eeeeee;
+    position: relative;
+}
+
+.heart {
+    position: absolute;
+    font-size: 25px;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh);
+    }
+    to {
+        transform: translateY(-10vh);
+    }
+}
+
+#message {
+    font-size: 22px;
+    color: #e91e63;
+    font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>💌 Birthday Mission 🎂</h1>
+
+<p>
+I have a very important question...
+</p>
+
+<p>
+Will you take me for a birthday lunch date? ❤️
+</p>
+
+<p>
+📅 28 July 2026<br>
+🕐 1:00 PM
+</p>
+
+<button id="yes">YES ❤️</button>
+
+<button id="no">NO 🙈</button>
+
+<p id="message"></p>
+
+<p>🎵 Don't forget to play our imaginary romantic soundtrack 😄</p>
+
+</div>
+
+
+<script>
+
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+const message = document.getElementById("message");
+
+let count = 0;
+
+const noTexts = [
+    "Are you sure? 😏",
+    "Really? 🤨",
+    "Think again 😂",
+    "Nice try ❤️"
+];
+
+
+no.addEventListener("mouseover", moveNo);
+no.addEventListener("click", moveNo);
+
+
+function moveNo(){
+
+    count++;
+
+    if(count < 5){
+
+        no.innerText = noTexts[count-1];
+
+        no.style.position = "absolute";
+
+        no.style.left =
+        Math.random()*250 + "px";
+
+        no.style.top =
+        Math.random()*250 + "px";
+
+    }
+    else {
+
+        yes.click();
+
+    }
+
+}
+
+
+yes.onclick = function(){
+
+    message.innerHTML =
+    "YAY!! ❤️🥳<br>Best birthday lunch date ever!";
+
+    for(let i=0;i<40;i++){
+
+        let heart=document.createElement("div");
+
+        heart.className="heart";
+
+        heart.innerHTML="❤️";
+
+        heart.style.left =
+        Math.random()*100+"vw";
+
+        heart.style.animationDuration =
+        (2+Math.random()*4)+"s";
+
+        document.body.appendChild(heart);
+
+    }
+
+};
+
+
+</script>
+
+</body>
+</html>
